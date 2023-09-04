@@ -576,7 +576,7 @@ class BaseContainer(Container, ABC):
         # check if the key has '~' as prefix to indicate overwriting
         readonly = False
         if isinstance(key, str) and key.startswith("~"):
-            key = key.removeprefix("~")
+            key = key[1:]  # key.removeprefix("~")
             readonly = True
 
         from .nodes import AnyNode, ValueNode
