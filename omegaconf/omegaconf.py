@@ -759,7 +759,7 @@ class OmegaConf:
                 node = root._get_child(last_key)
                 if OmegaConf.is_config(node):
                     assert isinstance(node, BaseContainer)
-                    node.merge_with(value)
+                    node.merge_with(value, list_merge_mode=ListMergeMode.EXTEND)
                     return
 
             if OmegaConf.is_dict(root):
