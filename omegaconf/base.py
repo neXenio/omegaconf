@@ -157,7 +157,7 @@ class Node(ABC):
         if isinstance(flags, str):
             flags = [flags]
 
-        if values is None or isinstance(values, bool):
+        if values is None or isinstance(values, (bool, str)):
             values = [values]
 
         if len(values) == 1:
@@ -210,7 +210,7 @@ class Node(ABC):
         if ret is _DEFAULT_MARKER_:
             ret = self._get_flag_no_cache(flag)
             cache[flag] = ret
-        assert ret is None or isinstance(ret, bool)
+        assert ret is None or isinstance(ret, (bool, str))
         return ret
 
     def _get_flag_no_cache(self, flag: str) -> Optional[bool]:
